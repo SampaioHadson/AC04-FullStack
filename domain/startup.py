@@ -1,8 +1,5 @@
 from database import db
 from entities.note import Note
-from repositories import noteRepository
-from services import noteService
-
 from flask import Flask, render_template
 
 app = Flask(__name__)
