@@ -10,11 +10,13 @@ def add(note: Note):
         session.commit()
 
 
-def get_by_name(name: str):
+def get_all():
     with Session(db.get_engine()) as session:
-        stm = select(Note)
+        return session.query(Note).all()
 
-        if name:
-            stm = stm.where(Note.name.contains(name))
 
-        return session.scalar(stm)
+def delete(id):
+    with Session(db.get_engine()) as session:
+        session.query(Note).filter(Note.id == id).delete(
+            synchronize_session=False)
+        session.commit()

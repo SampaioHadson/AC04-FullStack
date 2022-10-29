@@ -1,15 +1,12 @@
 from database import db
-from entities.note import Note
-from flask import Flask, render_template
+from flask import Flask
+from routes.homeRoutes import homeRoutes
+from routes.noteRoutes import noteRoutes
 
 app = Flask(__name__)
+app.register_blueprint(homeRoutes)
+app.register_blueprint(noteRoutes)
 db.start()
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.debug = True

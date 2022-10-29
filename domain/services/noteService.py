@@ -16,5 +16,9 @@ def add(note: Note):
     noteRepository.add(note)
 
 
-def get_by_name(name: str):
-    return 1
+def delete(id):
+    noteRepository.delete(id)
+
+
+def get_all():
+    return noteRepository.get_all()
